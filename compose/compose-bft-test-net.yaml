@@ -242,6 +242,5 @@ services:
       - ../scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
     depends_on:
       - peer0.org1.example.com
-      - peer0.org2.example.com
     networks:
       - test
