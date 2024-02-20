@@ -610,6 +610,10 @@ while [[ $# -ge 1 ]] ; do
     CC_QUERY_CONSTRUCTOR="$2"
     shift
     ;;    
+  -host ) # 새로운 옵션 -host 추가
+    HOST="$2"
+    shift
+    ;;
   * )
     errorln "Unknown flag: $key"
     printHelp
@@ -628,6 +632,12 @@ if [ $BFT -eq 1 ]; then
   export FABRIC_CFG_PATH=${PWD}/bft-config
   COMPOSE_FILE_BASE=compose-bft-test-net.yaml
 fi
+
+if [ $HOST -eq 2 ]; then
+  export FABRIC_CFG_PATH=${PWD}/bft-config
+  COMPOSE_FILE_BASE=compose-bft-test-net-host2.yaml
+fi
+
 
 # Are we generating crypto material with this command?
 if [ ! -d "organizations/peerOrganizations" ]; then
